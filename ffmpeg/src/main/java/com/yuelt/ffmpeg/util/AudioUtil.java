@@ -39,6 +39,11 @@ public class AudioUtil {
             @Override
             public void onEnd(int result) {
                 Log.i(TAG,"Amplify audio finished**********result="+result);
+                try {
+                    file.delete();
+                }catch (Exception ex){
+                    Log.i(TAG,"Delete original file failed!");
+                }
                 listener.onAudioHandleEnd(tmpFile,duration);
             }
         });
